@@ -1,4 +1,3 @@
-const sharp = require("sharp")
 const gm = require("gm")
 const constants = require("../../lib/constants")
 const collectors = require("../../lib/collectors")
@@ -109,7 +108,7 @@ module.exports = [
 					Some thumbnails aren't square and would otherwise be stretched on the page without this.
 					If I cropped the images client side, it would have to be done with CSS background-image, which means no <img srcset>.
 				*/
-				return request(verifyResult.url, {}, {log: true}).stream().then(body => {
+				/*return request(verifyResult.url, {}, {log: true}).stream().then(body => {
 					const converter = sharp().resize(width, width)
 					body.on("error", error => {
 						console.error("Response stream emitted an error:", error)
@@ -129,7 +128,7 @@ module.exports = [
 						},
 						stream: piped
 					}
-				})
+				})*/
 			} else {
 				// No specific size was requested, so just stream proxy the file directly.
 				if (params.has("userID")) {
