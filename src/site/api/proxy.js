@@ -79,7 +79,7 @@ module.exports = [
 					Some thumbnails aren't square and will be stretched on the page without this.
 					If I cropped the images client side, it would have to be done with CSS background-image, which means no <img srcset>.
 				*/
-				return request(verifyResult.url, {}, {log: true}).stream().then(body => {
+				return request(verifyResult.url, {}, {log: false}).stream().then(body => {
 					const image = gm(body).gravity("Center").crop(width, width, 0, 0).repage("+")
 					return {
 						statusCode: 200,
