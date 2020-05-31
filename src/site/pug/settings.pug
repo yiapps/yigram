@@ -33,11 +33,7 @@ html
 	body.settings-page
 		if status && message
 			.status-notice(class=status)= message
-			script.
-				const params = new URLSearchParams(window.location.search)
-				params.delete("status")
-				params.delete("message")
-				history.replaceState(null, "", "?" + params.toString())
+			script(src=getStaticURL("html", "/static/js/settings_message.js") type="module")
 		main.settings
 			form(action=returnAction method="post" enctype="application/x-www-form-urlencoded")
 				input(type="hidden" name="csrf" value=csrf)
@@ -61,11 +57,19 @@ html
 
 					+input("rewrite_twitter", "Rewrite Twitter domain", "twitter.com", true)
 
-					+checkbox("show_comments", "Display comments", "Display", true)
+					+checkbox("remove_trailing_hashtags", "Hide trailing hashtags", "Hide", false)
 
 					+checkbox("link_hashtags", "Clickable hashtags", "Clickable", true)
 
+					+checkbox("show_comments", "Display comments", "Display", true)
+
 					+checkbox("spa", "Fast navigation", "Enabled", false)
+
+					+select("infinite_scroll", "Infinite scroll", true, [
+						{value: "normal", text: "Normal"},
+						{value: "eager", text: "Eager"},
+						{value: "off", text: "Manual"}
+					])
 
 				+fieldset("Appearance")
 					+select("theme", "Theme", false, constants.themes.collated.map(entry => ({value: entry.file, text: entry.name})))

@@ -2,7 +2,7 @@ const constants = require("../constants")
 const {proxyImage, proxyExtendedOwner} = require("../utils/proxyurl")
 const {compile} = require("pug")
 const collectors = require("../collectors")
-const {structure} = require("../utils/structuretext")
+const {structure, removeTrailingHashtags} = require("../utils/structuretext")
 const TimelineBaseMethods = require("./TimelineBaseMethods")
 const TimelineChild = require("./TimelineChild")
 require("../testimports")(collectors, TimelineChild, TimelineBaseMethods)
@@ -27,6 +27,7 @@ class TimelineEntry extends TimelineBaseMethods {
 		this.ownerPfpCacheP = null
 		/** @type {import("./TimelineChild")[]} Not available until fetchChildren is called */
 		this.children = null
+		this.date = null
 	}
 
 	async update() {
@@ -80,6 +81,21 @@ class TimelineEntry extends TimelineBaseMethods {
 	 * All mutations should act exactly once and have no effect on already mutated data.
 	 */
 	fixData() {
+		this.date = new Date(this.data.taken_at_timestamp*1000)
+	}
+
+	getDisplayDate() {
+		function pad(number) {
+			return String(number).padStart(2, "0")
+		}
+		return (
+			`${this.date.getUTCFullYear()}`
+			+ `-${pad(this.date.getUTCMonth()+1)}`
+			+ `-${pad(this.date.getUTCDay()+1)}`
+			+ ` ${pad(this.date.getUTCHours())}`
+			+ `:${pad(this.date.getUTCMinutes())}`
+			+ ` UTC`
+		)
 	}
 
 	getCaption() {
@@ -92,6 +108,12 @@ class TimelineEntry extends TimelineBaseMethods {
 		const caption = this.getCaption()
 		if (!caption) return null // no caption
 		else return structure(caption)
+	}
+
+	getStructuredCaptionWithoutTrailingHashtags() {
+		const structured = this.getStructuredCaption()
+		if (!structured) return null // no caption
+		else return removeTrailingHashtags(structured)
 	}
 
 	/**
