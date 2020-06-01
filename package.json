@@ -16,13 +16,13 @@
     "better-sqlite3": "^6.0.1",
     "cookie": "^0.4.1",
     "feed": "github:cloudrac3r/feed#f42b4d7183fc2b6e566cb400ad083c4dd714c858",
+    "gm": "^1.23.1",
     "mixin-deep": "^2.0.1",
     "node-dir": "^0.1.17",
     "node-fetch": "^2.6.0",
     "pinski": "github:cloudrac3r/pinski#b062547bc0dcebb82c3aa7da36c13988a68b8acc",
     "pug": "^2.0.4",
     "semver": "^7.2.1",
-    "sharp": "^0.25.2",
     "socks-proxy-agent": "github:cloudrac3r/node-socks-proxy-agent#6a26d274b12098dfef6cc2faafd25b0c051f2467"
   },
   "optionalDependencies": {
