@@ -10,7 +10,7 @@ let constants = {
 	// Do NOT include a trailing slash. If you leave this as localhost, Bibliogram will not work correctly when accessed from any other device.
 	// If you are using nginx to make Bibliogram accessible on port 80/443, do NOT write a port here.
 	// For example, "https://bibliogram.art"
-	website_origin: "https://yigram-gnasa.ondigitalocean.app",
+	website_origin: "https://yigram-2ijn8.ondigitalocean.app",
 	// IP address to bind to.
 	// "0.0.0.0" will make the server reachable on all IPv4 interfaces.
 	// "::" will make the server reachable on all IPv6 interfaces, and maybe also IPv4. (https://nodejs.org/api/net.html#net_server_listen_port_host_backlog_callback)
