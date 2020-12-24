@@ -17,7 +17,7 @@ let constants = {
 	// If you run nginx, you must change the nginx config instead.
 	bind_ip: "0.0.0.0",
 	// Port to actually run the webserver on.
-	port: 443,
+	port: 10407,
 	// You MUST read /src/site/pug/privacy.pug.template before changing has_privacy_policy!
 	has_privacy_policy: false,
 	// If your instance is also available as an onion site, add the onion URL here.
