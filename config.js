@@ -6,4 +6,5 @@
 */
 
 module.exports = {
+    website_origin: "https://yigram-2ijn8.ondigitalocean.app"
 }
